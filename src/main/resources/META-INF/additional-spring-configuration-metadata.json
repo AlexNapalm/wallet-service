@@ -1,0 +1,18 @@
+{
+  "properties": [
+    {
+      "name": "application.config.max-balance-increase",
+      "type": "java.lang.String",
+      "description": "Description for application.config.max-balance-increase."
+    },
+    {
+      "name": "application.config.memory-flush-interval",
+      "type": "java.lang.String",
+      "description": "Description for application.config.memory-flush-interval."
+    },
+    {
+      "name": "application.config.max-amount-of-latest-transactions",
+      "type": "java.lang.String",
+      "description": "Description for application.config.max-amount-of-latest-transactions."
+    }
+  ] }
