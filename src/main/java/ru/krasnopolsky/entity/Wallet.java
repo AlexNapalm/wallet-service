@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 public class Wallet {
 
-    private final Logger logger = LogManager.getLogger(getClass());
+    private static final Logger LOG = LogManager.getLogger(Wallet.class);
     private BigDecimal balance;
     private long version;
 
@@ -19,13 +19,13 @@ public class Wallet {
 
     public synchronized void apply(Transaction transaction) {
         if (resultingBalanceNegative(transaction.getBalanceChange())) {
-            logger.error(BusinessException.ErrorCode.BALANCE_LESS_THAN_ZERO.formatErrorCode() + " for transaction: " + transaction.toString());
+            LOG.error(BusinessException.ErrorCode.BALANCE_LESS_THAN_ZERO.formatErrorCode() + " for transaction: " + transaction.toString());
             throw new BusinessException(BusinessException.ErrorCode.BALANCE_LESS_THAN_ZERO);
         }
         this.balance = balance.add(transaction.getBalanceChange());
         this.version++;
         transaction.setBalanceVersion(this.version);
-        logger.info(transaction.toString());
+        LOG.info(transaction.toString());
     }
 
     public BigDecimal getBalance() {

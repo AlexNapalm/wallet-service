@@ -11,10 +11,10 @@ import java.text.MessageFormat;
 @Service
 public class AuditService {
 
-    private final Logger logger = LogManager.getLogger(getClass());
+    private static final Logger LOG = LogManager.getLogger(AuditService.class);
 
     public void logTransactionIn(Transaction transaction, Player player) {
-        logger.info(
+        LOG.info(
                 MessageFormat.format(
                         "IN by player {0}: transactionId={1}, balanceChange={2}",
                         player.getUsername(),
@@ -25,7 +25,7 @@ public class AuditService {
     }
 
     public void logTransactionOut(Transaction transaction, Player player) {
-        logger.info(
+        LOG.info(
                 MessageFormat.format(
                         "OUT by player {0}: transactionId={1}, balanceVersion={2}, balanceChange={3}, resultingBalance={4}",
                         player.getUsername(),
